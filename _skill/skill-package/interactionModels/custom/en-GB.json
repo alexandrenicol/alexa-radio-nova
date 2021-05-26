@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "TODO",
+      "invocationName": "nova mix",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
@@ -20,8 +20,21 @@
           "samples": []
         },
         {
-          "name": "HelloWorldIntent",
-          "samples": ["hello", "hello world"]
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PauseIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ResumeIntent",
+          "samples": []
+        },
+        {
+          "name": "Play",
+          "slots": [],
+          "samples": ["play"]
         }
       ],
       "types": []

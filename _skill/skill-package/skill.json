@@ -3,24 +3,34 @@
     "publishingInformation": {
       "locales": {
         "en-GB": {
-          "summary": "Sample Short Description",
-          "examplePhrases": ["Alexa open hello world", "hello", "help"],
-          "name": "TODO",
-          "description": "Sample Full Description",
+          "summary": "Radio Nova",
+          "examplePhrases": [
+            "Alexa open radio nova"
+          ],
+          "name": "Radio Nova",
+          "description": "Radio Nova",
           "smallIconUri": "file://assets/en-US_smallIcon.png",
           "largeIconUri": "file://assets/en-US_largeIcon.png"
         }
       },
       "isAvailableWorldwide": true,
-      "testingInstructions": "Sample Testing Instructions.",
-      "category": "KNOWLEDGE_AND_TRIVIA",
+      "testingInstructions": "Say 'alexa open radio nova'",
+      "category": "MUSIC_AND_AUDIO_ACCESSORIES",
       "distributionCountries": []
     },
     "apis": {
       "custom": {
         "endpoint": {
-          "uri": "TODO"
-        }
+          "uri": "arn:aws:lambda:eu-west-1:822055506908:function:alexa-radio-nova-dev-skillLambda"
+        },
+        "interfaces": [
+          {
+            "type": "ALEXA_PRESENTATION_APL"
+          },
+          {
+            "type": "AUDIO_PLAYER"
+          }
+        ]
       }
     },
     "manifestVersion": "1.0",
