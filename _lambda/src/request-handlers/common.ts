@@ -7,7 +7,7 @@ import {
 } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 
-export const CommonHandlerFactory = (helpSpeech: string) => {
+export const CommonHandlerFactory = (helpSpeech: string): {[keyof:string]: RequestHandler | ErrorHandler} => {
   return {
     HelpIntentHandler: createHelpIntentHandler(helpSpeech),
     CancelAndStopIntentHandler,

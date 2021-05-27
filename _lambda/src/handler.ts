@@ -4,6 +4,7 @@ import {
   SkillBuilders,
   getRequestType,
   getIntentName,
+  ErrorHandler,
 } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 import { CommonHandlerFactory } from './request-handlers/common';
@@ -40,8 +41,8 @@ const PlayIntentHandler: RequestHandler = {
 const PauseIntentHandler: RequestHandler = {
   canHandle(handlerInput: HandlerInput): boolean {
     return (
-      Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
-      Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.PauseIntent'
+      getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
+      getIntentName(handlerInput.requestEnvelope) === 'AMAZON.PauseIntent'
     );
   },
   handle(handlerInput: HandlerInput): Response {
@@ -90,11 +91,9 @@ exports.handler = SkillBuilders.custom()
     PauseIntentHandler,
     ResumeIntentHandler,
     CancelAndStopIntentHandler,
-    commonHandlers.HelpIntentHandler,
-    commonHandlers.SessionEndedRequestHandler,
-    commonHandlers.IntentReflectorHandler
+    commonHandlers.HelpIntentHandler as RequestHandler,
+    commonHandlers.SessionEndedRequestHandler as RequestHandler,
+    commonHandlers.IntentReflectorHandler as RequestHandler
   )
-  .addErrorHandlers(
-    commonHandlers.CustomErrorHandler
-  )
+  .addErrorHandlers(commonHandlers.CustomErrorHandler as ErrorHandler)
   .lambda();
